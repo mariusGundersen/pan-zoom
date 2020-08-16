@@ -5,11 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pan-Zoom</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+    }
+  </style>
 </head>
 
 <body>
   <pan-zoom>
-    <img src="https://i.picsum.photos/id/85/300/300.jpg" />
+    <img src="https://picsum.photos/1000" />
   </pan-zoom>
   <script type="module" src="index.js"></script>
 </body>

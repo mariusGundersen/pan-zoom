@@ -13,29 +13,10 @@ class PanZoom extends HTMLElement {
       s: 1
     };
 
-    const shadowRoot = this.attachShadow({ mode: 'open' });
-
+    this.style.backgroundImage = `url(${this.getAttribute('src')})`;
+    this.style.backgroundPosition = `0px 0px`;
+    this.style.backgroundSize = `100%`
     this.style.touchAction = 'none';
-
-    shadowRoot.innerHTML = `
-      <style>
-        #wrapper {
-          touch-action: none;
-          overflow: hidden;
-        }
-        
-        #transformer {
-          transform-origin: top left;
-        }
-      </style>
-      <div id="wrapper">
-        <div id="transformer">
-          <slot></slot>
-        </div>
-      </div>
-    `;
-
-    this._transformerDiv = shadowRoot.querySelector('#transformer');
 
     const requestSingleAnimationFrame = debouncedAnimationFrame(() => {
       this.transform = solve(this.transform, ...pointers.values());
@@ -92,7 +73,8 @@ class PanZoom extends HTMLElement {
     this._transform.x = x;
     this._transform.y = y;
     this._transform.s = s;
-    this._transformerDiv.style.transform = toMatrix(this._transform);
+    this.style.backgroundPosition = `${x}px ${y}px`;
+    this.style.backgroundSize = `${s * 100}%`;
   }
 }
 

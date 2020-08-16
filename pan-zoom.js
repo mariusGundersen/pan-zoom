@@ -66,6 +66,8 @@ export function solve(transform, ...positions) {
     }
 
     return transform;
+  } else {
+    return transform;
   }
 }
 

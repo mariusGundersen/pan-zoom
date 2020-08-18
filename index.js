@@ -40,7 +40,7 @@ class PanZoom extends HTMLElement {
       requestSingleAnimationFrame();
     }, false);
 
-    this.addEventListener('pointerup', e => {
+    this.addEventListener('lostpointercapture', e => {
       if (!pointers.has(e.pointerId)) return;
 
       pointers.delete(e.pointerId);
